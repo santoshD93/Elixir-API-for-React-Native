@@ -18,8 +18,8 @@ When you are done, please submit your solution as pull request.
 
 You'll find installation instructions in each project. The installation of all necessary dependencies can take quite some time. Don't worry, there is no time limit on this task.
 
-- [Backend setup](https://github.com/code-and-co/kurabu-test/tree/master/backend)
-- [Mobile setup](https://github.com/code-and-co/kurabu-test/tree/master/mobile)
+- [Backend setup](https://github.com/santoshD93/kurabu-test-khubaib/tree/master/backend#readme)
+- [Mobile setup](https://github.com/santoshD93/kurabu-test-khubaib/tree/master/mobile#readme)
 
 ### Functionality Requirements
 
