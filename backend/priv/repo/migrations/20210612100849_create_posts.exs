@@ -10,7 +10,7 @@ defmodule Backend.Repo.Migrations.CreatePosts do
       add :title, :string
       add :body, :text
       add :status, :status
-      add :published_at, :utc_datetime
+      add :published_at, :utc_datetime_usec
       timestamps(inserted_at: :created_at)
     end
   end

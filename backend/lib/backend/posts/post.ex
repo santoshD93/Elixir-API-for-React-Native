@@ -6,7 +6,7 @@ defmodule Backend.Posts.Post do
     field :title, :string
     field :body, :string
     field :status, Ecto.Enum, values: [:unpublished, :published], default: :unpublished
-    field :published_at, :utc_datetime
+    field :published_at, :utc_datetime_usec
 
     timestamps(inserted_at: :created_at)
   end
