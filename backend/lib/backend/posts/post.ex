@@ -14,7 +14,7 @@ defmodule Backend.Posts.Post do
   @doc false
   def changeset(post, attrs) do
     post
-    |> cast(attrs, [:title, :body])
+    |> cast(attrs, [:title, :body, :status, :published_at])
     |> validate_required([:title, :body])
   end
 end
