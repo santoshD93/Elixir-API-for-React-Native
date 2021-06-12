@@ -6,3 +6,4 @@
 import Backend.PostFactory
 
 for _n <- 1..10, do: insert!(:post)
+for _n <- 1..5, do: insert!(:post, status: :published, published_at: DateTime.utc_now)
