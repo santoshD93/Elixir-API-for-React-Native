@@ -7,8 +7,8 @@ defmodule Backend.Posts do
   @doc """
   Returns the list of posts.
   """
-  def list_posts do
-    Repo.all(Post)
+  def list_posts(query) do
+    Repo.all(query)
   end
 
   @doc """
@@ -48,5 +48,37 @@ defmodule Backend.Posts do
   """
   def change_post(%Post{} = post, attrs \\ %{}) do
     Post.changeset(post, attrs)
+  end
+
+   @doc """
+  Returns the list of posts filtered by params.
+  """
+  def q_filtered_by(query, params) do
+    Enum.reduce(params, query, fn({key, value}, query) ->
+      case String.downcase(key) do
+        _ ->
+          from p in query,
+          where: field(p, ^String.to_atom(key)) == ^value
+      end
+    end)
+  end
+
+   @doc """
+  Returns the list of posts sort by params.
+  """
+  def q_sorted_by(query, params) do
+    Enum.reduce(params, query, fn({key, value}, query) ->
+      sort_type =
+        case value do
+          "asc" -> :asc
+          _ -> :desc
+        end
+      case String.downcase(key) do
+        _ ->
+          key = String.to_existing_atom(key)
+          from p in query,
+          order_by: [{^sort_type, ^key}]
+      end
+    end)
   end
 end

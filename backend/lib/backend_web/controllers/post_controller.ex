@@ -6,8 +6,14 @@ defmodule BackendWeb.PostController do
 
   action_fallback BackendWeb.FallbackController
 
+  plug :valid_filters, ~w(status) when action in [:index]
+  plug :valid_sort, ~w(published_at title) when action in [:index]
+
   def index(conn, _params) do
-    posts = Posts.list_posts()
+    posts = Post
+    |> Posts.q_filtered_by(conn.assigns.filters)
+    |> Posts.q_sorted_by(conn.assigns.sort)
+    |> Posts.list_posts
     render(conn, "index.json", posts: posts)
   end
 
@@ -50,4 +56,20 @@ defmodule BackendWeb.PostController do
       send_resp(conn, :no_content, "")
     end
   end
+
+  def valid_filters(conn, params) do
+    filters = Enum.filter(conn.params, fn({k, v}) ->
+      Enum.member?(params, k) && !is_blank(v)
+    end)
+    conn |> assign(:filters, filters)
+  end
+
+  def valid_sort(conn, params) do
+    sort = Enum.filter(conn.params, fn({k, v}) ->
+       Enum.member?(params, k)
+    end)
+    conn |> assign(:sort, sort)
+  end
+
+  def is_blank(val) when is_binary(val), do: String.trim(val) == ""
 end
