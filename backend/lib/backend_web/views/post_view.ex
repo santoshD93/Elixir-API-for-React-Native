@@ -11,9 +11,13 @@ defmodule BackendWeb.PostView do
   end
 
   def render("post.json", %{post: post}) do
-    %{id: post.id,
+    %{
+      id: post.id,
       title: post.title,
-      body: post.body}
+      body: post.body,
+      status: post.status,
+      published_at: post.published_at
+    }
   end
 
   def render("errors.json", %{errors: errors}) do
@@ -22,7 +26,7 @@ defmodule BackendWeb.PostView do
 
   def render("error.json", %{post: {error_field, {message, _}}}) do
     %{
-      error_field: message
+      error: "#{error_field} #{message}"
     }
   end
 end
