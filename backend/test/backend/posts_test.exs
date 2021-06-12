@@ -2,6 +2,9 @@ defmodule Backend.PostsTest do
   use Backend.DataCase
 
   alias Backend.Posts
+  alias Backend.Posts.Post
+
+  import Backend.PostFactory
 
   describe "posts" do
     alias Backend.Posts.Post
@@ -10,18 +13,11 @@ defmodule Backend.PostsTest do
     @update_attrs %{body: "updated body", title: "updated title"}
     @invalid_attrs %{body: nil, title: nil}
 
-    def post_fixture(attrs \\ %{}) do
-      {:ok, post} =
-        attrs
-        |> Enum.into(@valid_attrs)
-        |> Posts.create_post()
-
-      post
-    end
+    def post_fixture(attrs \\ %{}), do: insert!(:post)
 
     test "list_posts returns all posts" do
       post = post_fixture()
-      assert Posts.list_posts() == [post]
+      assert Posts.list_posts(Post) == [post]
     end
 
     test "get_post returns the post with given id" do
