@@ -1,18 +1,14 @@
-# Kurabu Test
+## Task
 
-As future Full Stack Developer at Kurabu, it will be up to you to continue the work and build upon the existing code base. Our platform relies on [Phoenix](https://www.phoenixframework.org) and [React Native](https://reactnative.dev). The goal of this test is to demonstrate your understanding of the basics of these frameworks and how they interact.
-
-## The task
-
-Clone this repository to your machine and setup both projects.
+Clone this repository to your machine and set up both projects.
 
 The task is to create an API in the Phoenix backend that will be consumed by the React Native client. 
 
-In the backend, setup a `Post` model and add corresponding API endpoints. In the mobile client, fetch and display the posts from the backend. From the mobile client, you should be able to sort and filter the posts and create a new post.
+In the backend, set up a `Post` model and add corresponding API endpoints. In the mobile client, fetch and display the posts from the backend. From the mobile client, you should be able to sort and filter the posts and create a new post.
 
-You can disregard any authentication/authorization concerns. User interface design is not important and we leave it up to you.
+You can disregard any authentication/authorisation concerns. User interface design is not important and we leave it up to you.
 
-When you are done, please submit your solution as pull request.
+When you are done, please submit your solution as a pull request.
 
 ### Setup
 
@@ -23,11 +19,11 @@ You'll find installation instructions in each project. The installation of all n
 
 ### Functionality Requirements
 
-Below, we detailed the functional requirements. It is up to you how you implement the features but we care about understanding your thought process and code quality practices. Feel free to add any additional functionality, but don't worry about the user interface.
+Below are the functional requirements. It is up to you how you implement the features, but we care about understanding your thought process and code quality practices. Feel free to add any additional functionality, but don't worry about the user interface.
 
 #### Backend
 
-- Setup a `Post` model with the following attributes:
+- Set up a `Post` model with the following attributes:
 
   - `title` string
   - `body` text
